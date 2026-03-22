@@ -963,6 +963,9 @@ function showStopResult() {
       </ul>
     </div>
   `;
+
+  // 구글시트 전송 (운동 자제 권고)
+  sendToSheet();
 }
 
 function showResult() {
@@ -1126,8 +1129,27 @@ function showResult() {
 
   document.getElementById('result-content').innerHTML = html;
 
+  // 구글시트 전송
+  sendToSheet();
+
   // Scroll to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function sendToSheet() {
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx3vO1Bk_PEDGO-b6WZSlHIdwpTxvel1UCTMcgZTgcBaa5Z0O0J7xCeO1r47isOVxsB/exec';
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({
+      week: answers.week || '',
+      doctor: answers.doctor || '',
+      experience: answers.experience || '',
+      condition: answers.condition || '',
+      goal: answers.goal || ''
+    })
+  }).catch(() => {});
 }
 
 function restart() {
