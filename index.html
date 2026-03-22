@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>임산부 운동 가이드 — After Yoga & Pilates</title>
+  <meta property="og:title" content="임산부 운동 가이드 — After Yoga & Pilates">
+  <meta property="og:description" content="임산부 요가·필라테스 안전 운동 자료 모음">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f3ee;
+      --surface: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #7a7a7a;
+      --text-muted: #a0a0a0;
+      --accent-green: #059669;
+      --accent-blue: #3b82f6;
+      --accent-amber: #d97706;
+      --border: #e8e6e1;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --shadow-file: 0 2px 8px rgba(0,0,0,0.06), 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'DM Sans', 'Noto Sans KR', sans-serif;
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 60px 24px 80px;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* 헤더 */
+    .page-header {
+      margin-bottom: 40px;
+    }
+    .brand {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .page-title {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .page-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    /* 섹션 라벨 */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .section + .section {
+      margin-top: 32px;
+    }
+
+    /* 파일 카드 */
+    .file-card {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-file);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: box-shadow 0.2s, transform 0.2s;
+      margin-bottom: 10px;
+    }
+    .file-card:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    .file-card:last-child { margin-bottom: 0; }
+
+    .file-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      background: #fafaf8;
+    }
+    .file-icon {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .file-icon.green  { background: #d1fae5; }
+    .file-icon.blue   { background: #eff6ff; }
+    .file-icon.amber  { background: #fef3c7; }
+
+    .file-meta { flex: 1; min-width: 0; }
+    .file-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .file-type {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .file-body {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .file-desc-wrap { flex: 1; }
+    .file-title {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .file-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .file-arrow {
+      color: var(--text-muted);
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    /* 배지 */
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+    .badge.member  { background: #d1fae5; color: #065f46; }
+    .badge.instructor { background: #eff6ff; color: #1e40af; }
+
+    /* 안내 카드 */
+    .info-card {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .info-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* footer */
+    .page-footer {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 40px 16px 60px; }
+      .page-title { font-size: 22px; }
+      .file-name { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 헤더 -->
+    <header class="page-header">
+      <p class="brand">After Yoga &amp; Pilates — 서울숲점</p>
+      <h1 class="page-title">임산부 운동 가이드</h1>
+      <p class="page-subtitle">임산부 회원과 강사를 위한 안전 운동 자료 모음입니다.</p>
+    </header>
+
+    <!-- 회원용 -->
+    <section class="section">
+      <p class="section-label">회원용</p>
+
+      <a href="prenatal-self-test.html" class="file-card">
+        <div class="file-header">
+          <div class="file-icon green">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <div class="file-meta">
+            <div class="file-name">prenatal-self-test.html</div>
+            <div class="file-type">HTML · 인터랙티브 퀴즈</div>
+          </div>
+        </div>
+        <div class="file-body">
+          <div class="file-desc-wrap">
+            <span class="badge member">회원용</span>
+            <div class="file-title">임산부 자가 테스트</div>
+            <div class="file-desc">임신 시기·건강 상태를 입력하면 맞춤 수업을 추천해 드립니다.</div>
+          </div>
+          <span class="file-arrow">›</span>
+        </div>
+      </a>
+      <a href="prenatal-yoga-pilates-guide.html" class="file-card">
+        <div class="file-header">
+          <div class="file-icon" style="background:#fce4ec;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M12 8v4l3 3"/>
+            </svg>
+          </div>
+          <div class="file-meta">
+            <div class="file-name">prenatal-yoga-pilates-guide.html</div>
+            <div class="file-type">HTML · 모바일 스크롤 가이드</div>
+          </div>
+        </div>
+        <div class="file-body">
+          <div class="file-desc-wrap">
+            <span class="badge member">회원용</span>
+            <div class="file-title">임산부 요가/필라테스 안전 운동 매뉴얼</div>
+            <div class="file-desc">주차별 운동 가능 여부, 금기 동작, 추천 수업, 응급 신호까지 한눈에.</div>
+          </div>
+          <span class="file-arrow">›</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- 강사용 -->
+    <section class="section">
+      <p class="section-label">강사용</p>
+
+      <a href="prenatal-response-manual.html" class="file-card">
+        <div class="file-header">
+          <div class="file-icon blue">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <div class="file-meta">
+            <div class="file-name">prenatal-response-manual.html</div>
+            <div class="file-type">HTML · 정적 문서</div>
+          </div>
+        </div>
+        <div class="file-body">
+          <div class="file-desc-wrap">
+            <span class="badge instructor">강사용</span>
+            <div class="file-title">임산부 응대 매뉴얼</div>
+            <div class="file-desc">수업 전 체크리스트, 참여 가능·불가 수업, 응급 신호 대응 가이드.</div>
+          </div>
+          <span class="file-arrow">›</span>
+        </div>
+      </a>
+
+      <a href="prenatal-response-manual-slides.html" class="file-card">
+        <div class="file-header">
+          <div class="file-icon amber">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="file-meta">
+            <div class="file-name">prenatal-response-manual-slides.html</div>
+            <div class="file-type">HTML · 슬라이드</div>
+          </div>
+        </div>
+        <div class="file-body">
+          <div class="file-desc-wrap">
+            <span class="badge instructor">강사용</span>
+            <div class="file-title">임산부 응대 매뉴얼 (슬라이드)</div>
+            <div class="file-desc">같은 내용을 슬라이드 형식으로 — 교육·미팅에 활용하기 좋습니다.</div>
+          </div>
+          <span class="file-arrow">›</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- 안내 -->
+    <section class="section">
+      <div class="info-card">
+        <p>이 자료는 애프터 요가&amp;필라테스 내부 가이드를 기반으로 제작되었습니다. 내용은 수시로 업데이트될 수 있으며, 최신 정보는 강사 또는 데스크에 문의해 주세요.</p>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <p>© After Yoga &amp; Pilates 서울숲점</p>
+    </footer>
+
+  </div>
+</body>
+</html>

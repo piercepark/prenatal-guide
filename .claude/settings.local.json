@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip3 install:*)",
+      "Bash(python3:*)",
+      "Bash(unzip -l \"/Users/parkmingyu/Library/CloudStorage/GoogleDrive-pierce.park.83@gmail.com/다른 컴퓨터/내 MacBook Pro/Desktop/cowork/after-yoga-studio.plugin\")",
+      "Bash(unzip -l \"/Users/parkmingyu/Library/CloudStorage/GoogleDrive-pierce.park.83@gmail.com/다른 컴퓨터/내 MacBook Pro/Desktop/cowork/pierce-design-toolkit.plugin\")",
+      "Bash(unzip -p \"/Users/parkmingyu/Library/CloudStorage/GoogleDrive-pierce.park.83@gmail.com/다른 컴퓨터/내 MacBook Pro/Desktop/cowork/after-yoga-studio.plugin\" .claude-plugin/plugin.json)",
+      "Bash(python3 -c \":*)"
+    ]
+  }
+}

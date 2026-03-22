@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>강사 핸드오프 체크리스트 — After Yoga & Pilates</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f3ee;
+      --surface: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #7a7a7a;
+      --text-muted: #a0a0a0;
+      --border: #e8e6e1;
+      --accent-green: #059669;
+      --accent-blue: #3b82f6;
+      --accent-amber: #d97706;
+      --accent-red: #e8453c;
+      --radius-sm: 1.5mm;
+      --radius-md: 3mm;
+      --shadow: 0 0.3mm 1.5mm rgba(0,0,0,0.05), 0 2mm 8mm rgba(0,0,0,0.07);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 297mm;
+      margin: 0; padding: 0;
+      font-family: 'DM Sans', 'Noto Sans KR', sans-serif;
+      font-size: 8pt;
+      background: #e5e8eb;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 297mm;
+      height: 210mm;
+      margin: 0 auto;
+      padding: 7.5mm 8.5mm;
+      background: var(--bg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @media print {
+      @page { size: A4 landscape; margin: 0; }
+      html, body { background: white; }
+      .page { margin: 0; box-shadow: none; }
+      * { box-shadow: none !important; }
+    }
+
+    /* ─── Header ─── */
+    .page-header {
+      flex-shrink: 0;
+      margin-bottom: 4mm;
+    }
+
+    .header-row1 {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      margin-bottom: 3mm;
+    }
+
+    .brand-badge {
+      background: var(--text-primary);
+      color: white;
+      font-family: 'DM Mono', monospace;
+      font-size: 5.5pt;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.2mm 2.5mm;
+      border-radius: 1.2mm;
+      white-space: nowrap;
+      flex-shrink: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page-title {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12.5pt;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .page-subtitle {
+      font-size: 7pt;
+      color: var(--text-secondary);
+      font-family: 'Noto Sans KR', sans-serif;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    /* 기본 정보 fields row */
+    .header-row2 {
+      display: flex;
+      align-items: flex-end;
+      gap: 5mm;
+      padding: 2.5mm 3.5mm;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8mm;
+      flex-shrink: 0;
+    }
+
+    .field-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 5.5pt;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .field-line {
+      border-bottom: 1px solid #c8c5be;
+      height: 4.5mm;
+    }
+
+    .field-line.w-sm { width: 18mm; }
+    .field-line.w-md { width: 28mm; }
+    .field-line.w-lg { width: 38mm; }
+
+    .field-spacer { flex: 1; }
+
+    /* 전달 방식 체크박스 */
+    .delivery-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 5.5pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .delivery-opts {
+      display: flex;
+      gap: 3mm;
+    }
+
+    .dopt {
+      display: flex;
+      align-items: center;
+      gap: 1.2mm;
+      font-size: 7pt;
+      color: var(--text-primary);
+      font-family: 'Noto Sans KR', sans-serif;
+      white-space: nowrap;
+    }
+
+    .cb-sq {
+      width: 3mm; height: 3mm;
+      border: 1.5px solid #c8c5be;
+      border-radius: 0.5mm;
+      flex-shrink: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ─── Body ─── */
+    .page-body {
+      flex: 1;
+      display: flex;
+      gap: 3.5mm;
+      min-height: 0;
+    }
+
+    .col { display: flex; flex-direction: column; gap: 3mm; min-width: 0; }
+    .col-wide { flex: 1.35; }
+    .col-mid  { flex: 1.1; }
+    .col-narrow { flex: 1; }
+
+    /* ─── File Card ─── */
+    .file-card {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .file-header {
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+      padding: 2.5mm 3.5mm;
+      border-bottom: 1px solid var(--border);
+      background: #fafaf8;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .file-icon {
+      width: 6.5mm; height: 6.5mm;
+      border-radius: 1.2mm;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .fh-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 6pt;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-right: 0.5mm;
+    }
+
+    .fh-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 6.5pt;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .fh-sub {
+      margin-left: auto;
+      font-size: 5.5pt;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .file-body { padding: 3mm 3.5mm; }
+
+    /* ─── 회원 정보 체크리스트 테이블 ─── */
+    .check-table { width: 100%; border-collapse: collapse; }
+
+    .check-table tr { border-bottom: 1px solid #f0ede8; }
+    .check-table tr:last-child { border-bottom: none; }
+
+    .check-table td {
+      padding: 1.8mm 1.5mm;
+      vertical-align: top;
+    }
+
+    .td-cb { width: 4mm; }
+    .td-key {
+      width: 14mm;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 6.5pt;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+    .td-val {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 6.5pt;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .cb-sq-sm {
+      width: 2.8mm; height: 2.8mm;
+      border: 1.5px solid #c8c5be;
+      border-radius: 0.5mm;
+      display: inline-block;
+      margin-top: 0.3mm;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* 주수 뱃지 행 */
+    .week-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      flex-wrap: wrap;
+    }
+
+    .week-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 1mm;
+      font-size: 6pt;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text-secondary);
+    }
+
+    /* 핵심 전달 카드 */
+    .highlight-card {
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: var(--radius-sm);
+      padding: 2.5mm 3mm;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .hl-title {
+      font-size: 6pt;
+      font-weight: 700;
+      color: #065f46;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 1.5mm;
+    }
+
+    .hl-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 2mm;
+      margin-bottom: 1.2mm;
+    }
+
+    .hl-num {
+      width: 3.5mm; height: 3.5mm;
+      border-radius: 50%;
+      background: var(--accent-green);
+      color: white;
+      font-size: 5.5pt;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-family: 'DM Mono', monospace;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .hl-text {
+      font-size: 6.5pt;
+      color: #064e3b;
+      font-family: 'Noto Sans KR', sans-serif;
+      line-height: 1.45;
+    }
+
+    .hl-sub {
+      font-size: 5.5pt;
+      color: #059669;
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* 메시지 템플릿 */
+    .msg-box {
+      background: #fafaf8;
+      border: 1px dashed #c8c5be;
+      border-radius: var(--radius-sm);
+      padding: 2.5mm 3mm;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .msg-filename {
+      font-family: 'DM Mono', monospace;
+      font-size: 6pt;
+      color: var(--text-muted);
+      margin-bottom: 1.5mm;
+    }
+
+    .msg-text {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 6.5pt;
+      color: var(--text-primary);
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+
+    .msg-text em {
+      font-style: normal;
+      color: var(--accent-blue);
+      font-family: 'DM Mono', monospace;
+      font-size: 6pt;
+    }
+
+    /* 수업 참여 가이드 */
+    .guide-section {
+      margin-bottom: 2mm;
+    }
+
+    .guide-header {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+      margin-bottom: 1.5mm;
+    }
+
+    .guide-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2mm;
+      font-size: 6.5pt;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      padding: 0.8mm 2mm;
+      border-radius: 10mm;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .guide-badge.ok     { background: #d1fae5; color: #065f46; }
+    .guide-badge.no     { background: #fee2e2; color: #991b1b; }
+    .guide-badge.caution { background: #fef3c7; color: #92400e; }
+
+    .guide-list {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 6.5pt;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 1mm;
+    }
+
+    .guide-sub {
+      font-size: 5.5pt;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 2mm 0;
+    }
+
+    /* 특이사항 줄 */
+    .note-line {
+      border-bottom: 1px dashed #d8d5cf;
+      height: 5.5mm;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header class="page-header">
+    <div class="header-row1">
+      <span class="brand-badge">After Yoga &amp; Pilates</span>
+      <h1 class="page-title">강사 핸드오프 체크리스트</h1>
+      <p class="page-subtitle">임산부 회원 체험·등록 확정 후 → 수업 담당 강사에게 사전 전달</p>
+    </div>
+    <div class="header-row2">
+      <div class="field-group">
+        <span class="field-label">작성일</span>
+        <div class="field-line w-md"></div>
+      </div>
+      <div class="field-group">
+        <span class="field-label">작성자</span>
+        <div class="field-line w-sm"></div>
+      </div>
+      <div class="field-group">
+        <span class="field-label">예약 수업</span>
+        <div class="field-line w-lg"></div>
+      </div>
+      <div class="field-group">
+        <span class="field-label">수업 일시</span>
+        <div class="field-line w-md"></div>
+      </div>
+      <div class="field-group">
+        <span class="field-label">담당 강사</span>
+        <div class="field-line w-sm"></div>
+      </div>
+      <div class="field-spacer"></div>
+      <div class="field-group">
+        <span class="delivery-label">전달 방식</span>
+        <div class="delivery-opts">
+          <span class="dopt"><span class="cb-sq"></span>카톡</span>
+          <span class="dopt"><span class="cb-sq"></span>전화</span>
+          <span class="dopt"><span class="cb-sq"></span>대면</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Body ── -->
+  <div class="page-body">
+
+    <!-- Col 1: 02 회원 정보 체크리스트 -->
+    <div class="col col-wide">
+      <div class="file-card" style="flex:1;">
+        <div class="file-header">
+          <div class="file-icon" style="background:#dbeafe;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <span class="fh-num">02</span>
+          <span class="fh-title">회원 정보 체크리스트</span>
+          <span class="fh-sub">Member Info</span>
+        </div>
+        <div class="file-body">
+          <table class="check-table">
+            <tr>
+              <td class="td-cb"><span class="cb-sq-sm"></span></td>
+              <td class="td-key">회원명</td>
+              <td class="td-val">
+                <div style="border-bottom:1px solid #d8d5cf; height:4mm; width:100%;"></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-cb"><span class="cb-sq-sm"></span></td>
+              <td class="td-key">임신 주수</td>
+              <td class="td-val">
+                <div class="week-row">
+                  <span style="border-bottom:1px solid #d8d5cf; display:inline-block; width:10mm; height:4mm;"></span>
+                  <span style="font-size:6pt; color:var(--text-muted);">주</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>초기(~12주)</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>중기(13~28주)</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>후기(29~36주)</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>만삭(37주+)</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-cb"><span class="cb-sq-sm"></span></td>
+              <td class="td-key">주치의 허가</td>
+              <td class="td-val">
+                <div class="week-row">
+                  <span class="week-badge"><span class="cb-sq-sm"></span>확인 완료</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>미확인 (확인 후 예약 권유)</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>운동 제한 소견</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-cb"><span class="cb-sq-sm"></span></td>
+              <td class="td-key">운동 경험</td>
+              <td class="td-val">
+                <div class="week-row">
+                  <span class="week-badge"><span class="cb-sq-sm"></span>요가·필라테스 경험</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>다른 운동 경험</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>없음 (초보)</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-cb"><span class="cb-sq-sm"></span></td>
+              <td class="td-key">불편 증상</td>
+              <td class="td-val">
+                <div class="week-row">
+                  <span class="week-badge"><span class="cb-sq-sm"></span>없음</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>허리·골반</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>부종</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>피로감</span>
+                  <span class="week-badge"><span class="cb-sq-sm"></span>기타:</span>
+                  <span style="border-bottom:1px solid #d8d5cf; display:inline-block; width:18mm; height:4mm;"></span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-cb"><span class="cb-sq-sm"></span></td>
+              <td class="td-key">특이사항</td>
+              <td class="td-val">
+                <div style="border-bottom:1px solid #d8d5cf; height:4.5mm; width:100%;"></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Col 2: 핵심 전달 3가지 + 메시지 템플릿 -->
+    <div class="col col-mid">
+
+      <!-- 핵심 전달 -->
+      <div class="file-card">
+        <div class="file-header">
+          <div class="file-icon" style="background:#d1fae5;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <span class="fh-title">꼭 전달할 핵심 3가지</span>
+          <span class="fh-sub">Key Points</span>
+        </div>
+        <div class="file-body">
+          <div class="highlight-card">
+            <div class="hl-item">
+              <div class="hl-num">1</div>
+              <div>
+                <div class="hl-text">현재 임신 주수</div>
+                <div class="hl-sub">→ 수업 강도 조절 기준</div>
+              </div>
+            </div>
+            <div class="hl-item">
+              <div class="hl-num">2</div>
+              <div>
+                <div class="hl-text">불편한 부위</div>
+                <div class="hl-sub">→ 대체 동작 판단 근거</div>
+              </div>
+            </div>
+            <div class="hl-item" style="margin-bottom:0;">
+              <div class="hl-num">3</div>
+              <div>
+                <div class="hl-text">운동 경험 유무</div>
+                <div class="hl-sub">→ 초보자 기본 동작 안내</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 메시지 템플릿 -->
+      <div class="file-card" style="flex:1;">
+        <div class="file-header">
+          <div class="file-icon" style="background:#1e1e2e;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#89b4fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <span class="fh-num">03</span>
+          <span class="fh-title">강사에게 보낼 메시지 템플릿</span>
+        </div>
+        <div class="file-body">
+          <div class="msg-box">
+            <div class="msg-filename">📋 message-template.txt</div>
+            <div class="msg-text">선생님, <em>[날짜]</em> <em>[시간]</em> <em>[수업명]</em> 수업에
+임산부 회원님이 참여하십니다.
+
+· 성함: <em>[이름]</em>님
+· 현재 <em>[주수]</em>주차
+· 불편 증상: <em>[증상 또는 없음]</em>
+· 운동 경험: <em>[있음/없음]</em>
+
+부담 동작 시 대체 동작 안내 부탁드립니다.
+감사합니다!</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Col 3: 04 수업 참여 가이드 -->
+    <div class="col col-narrow">
+      <div class="file-card" style="flex:1;">
+        <div class="file-header">
+          <div class="file-icon" style="background:#fce4ec;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <span class="fh-num">04</span>
+          <span class="fh-title">수업 참여 가이드</span>
+        </div>
+        <div class="file-body">
+
+          <div class="guide-section">
+            <div class="guide-header">
+              <span class="guide-badge ok">✅ 참여 가능</span>
+            </div>
+            <div class="guide-list">
+              <div style="margin-bottom:1mm;">
+                <span style="font-size:5.5pt; color:var(--text-muted); font-family:'DM Mono',monospace;">요가 —</span>
+                힐링·하타·골반테라피·척추테라피<br>밸런스·엠보링·코어테라피·오늘의 자세
+              </div>
+              <div>
+                <span style="font-size:5.5pt; color:var(--text-muted); font-family:'DM Mono',monospace;">필라테스 —</span>
+                체형교정(Track 1)·코어(Track 2)
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="guide-section">
+            <div class="guide-header">
+              <span class="guide-badge no">🚫 참여 불가</span>
+            </div>
+            <div class="guide-list">
+              <div style="margin-bottom:1mm;">
+                <span style="font-size:5.5pt; color:var(--text-muted); font-family:'DM Mono',monospace;">요가 —</span>
+                번지·플라잉A/G·빈야사·아쉬탕가<br>바레·코어요가·에볼루션플로우
+              </div>
+              <div>
+                <span style="font-size:5.5pt; color:var(--text-muted); font-family:'DM Mono',monospace;">필라테스 —</span>
+                다이어트(Track 4)
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="guide-section" style="margin-bottom:0;">
+            <div class="guide-header">
+              <span class="guide-badge caution">⚠️ 강사 상담 후 판단</span>
+            </div>
+            <div class="guide-list">
+              힐링빈야사·힙업 필라테스(Track 3)<br>
+              <span style="font-size:5.5pt; color:var(--text-muted); font-family:'DM Mono',monospace;">→ 회원 주수·컨디션에 따라 강사 개별 판단</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
