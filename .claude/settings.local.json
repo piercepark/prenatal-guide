@@ -6,7 +6,11 @@
       "Bash(unzip -l \"/Users/parkmingyu/Library/CloudStorage/GoogleDrive-pierce.park.83@gmail.com/다른 컴퓨터/내 MacBook Pro/Desktop/cowork/after-yoga-studio.plugin\")",
       "Bash(unzip -l \"/Users/parkmingyu/Library/CloudStorage/GoogleDrive-pierce.park.83@gmail.com/다른 컴퓨터/내 MacBook Pro/Desktop/cowork/pierce-design-toolkit.plugin\")",
       "Bash(unzip -p \"/Users/parkmingyu/Library/CloudStorage/GoogleDrive-pierce.park.83@gmail.com/다른 컴퓨터/내 MacBook Pro/Desktop/cowork/after-yoga-studio.plugin\" .claude-plugin/plugin.json)",
-      "Bash(python3 -c \":*)"
+      "Bash(python3 -c \":*)",
+      "mcp__claude_ai_Google_Calendar__gcal_list_events",
+      "mcp__claude_ai_Google_Calendar__gcal_create_event",
+      "Bash(open \"/Users/parkmingyu/Library/CloudStorage/GoogleDrive-pierce.park.83@gmail.com/다른 컴퓨터/내 MacBook Pro/Desktop/cowork/04_임산부·산전/prenatal-response-manual-slides.html\")",
+      "Bash(code --install-extension ritwickdey.LiveServer)"
     ]
   }
 }
